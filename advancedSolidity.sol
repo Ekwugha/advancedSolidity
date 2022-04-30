@@ -154,22 +154,18 @@ contract Modifiers {
 
     // these 4 functions should be called by the owner only
     function someFunction1() public onlyOwner {
-        require(msg.sender == owner, "Unauthorized");
         //  run rest of the code
     }
 
     function someFunction2() public onlyOwner {
-        require(msg.sender == owner, "Unauthorized");
         //  run rest of the code
     }
 
     function someFunction3() public onlyOwner {
-        require(msg.sender == owner, "Unauthorized");
         //  run rest of the code
     }
 
     function someFunction4() public onlyOwner {
-        require(msg.sender == owner, "Unauthorized");
         //  run rest of the code
     }
 
