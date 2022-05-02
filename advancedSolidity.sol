@@ -170,3 +170,25 @@ contract Modifiers {
     }
 
 }
+
+contract EthSender {
+    function mirror() public payable {
+        // msg.sender is tbe person we are getting the ETH from
+        // and also person we send it back to
+
+        // msg.value is the amount of ETH we recieve 
+        // and amount we send back
+
+        address payable target = payable(msg.sender);
+        uint amount = msg.value;
+
+        // (payable address).call{ value: amount }("");
+        // .call() returns two variables
+        // the first is a bool indicating success or failure
+        // second is some bytes which have data
+
+        (bool success, bytes memory data) = target.call{ value: amount }("");
+        require(success, "FAILURE");
+
+    }
+}
