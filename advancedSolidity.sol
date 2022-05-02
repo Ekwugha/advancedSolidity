@@ -227,3 +227,19 @@ contract Libraries {
         return SafeMath.add(x, y);   
     }
 }
+
+contract Events {
+    // Events are 'logs' on the Ethereun blockchain
+    // You can use events to 'log' information on the blockchain,
+    // kind of for a proof of history that something happened at a certain block
+
+    // Events have:
+    // 1. name
+    // 2.arguments that you want to log
+
+    event TestFunctionCalled(address sender, string message);
+
+    function test() public {
+        emit TestFunctionCalled(msg.sender, "Somebody called test()");
+    }
+}
