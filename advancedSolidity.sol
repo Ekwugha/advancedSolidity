@@ -192,3 +192,38 @@ contract EthSender {
 
     }
 }
+
+library SafeMath {
+    // we manually created a library that adds 2 numbers together
+    // Libraries are similar to contracts in Solidity, with a few limitations. 
+    // Libraries cannot contain any state variables, and cannot transfer ETH.
+    function add(uint x, uint y) internal pure returns (uint) {
+        uint z = x + y;
+        // make sure an overflow did not occur
+        require(z >= x, "overflow happened");
+        require(z >= y, "overflow happened");
+        return z;
+    }
+
+    // Integer overflow example
+
+    // Imagine we have a uint8. it can hold values from 0 to (2 ^ 8)-1 i.e 0-255
+    // uint8 a = 254;
+    // uint8 b = 5;
+
+    // PRE SOLIDITY 0.8
+
+    // uint8 c = a + b;
+    // 254 + 5 = 259
+    // the value of c, after this statement, wwould actually be 4
+    // but you epected it to be 259
+}
+
+
+contract Libraries {
+    // we called the library we created above to do the 
+    // addition for in this function
+    function testAddition(uint x, uint y) public pure returns (uint) {
+        return SafeMath.add(x, y);   
+    }
+}
